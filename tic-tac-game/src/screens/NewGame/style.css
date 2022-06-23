@@ -1,0 +1,100 @@
+.newGame-container{
+    /* position: relative; */
+    max-width: 90%;
+    margin: 0 auto;
+    height: auto;
+}
+
+.top-icons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+    margin: 5px auto;
+}
+.top-icons img{
+    margin: 0 5px;
+}
+
+.choose-player-card{
+    margin: 10px auto;
+    height: auto;
+    border-radius: 15px;
+    background: #1F3641;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px auto;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.choose-player-card h2{
+    font-size: 1.5rem;
+}
+.choose-player-card p{
+    font-size:0.95rem;
+    color: #A8BFC9;
+    font-weight: 600;
+}
+.player-choice-grp-btn{
+    background: #1a2a33;
+    width: 80%;
+    padding: 20px 10px;
+    border-radius: 15px;
+    height: auto;
+    margin: 5px auto;
+}
+.player-choice-grp-btn .player-choice-btn{
+    width: 50%;
+    background: none;
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    /* display: flex;
+    flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+}
+.player-choice-grp-btn .player-choice-btn img{
+    width: 25px;
+    height: 25px;
+}
+
+.player-choice-grp-btn .btn-o{
+    background: #a8bfc9;
+}
+
+.btn-group{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+}
+
+.btn-new-game{
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px 0;
+    border: none;
+    border-radius: 10px;
+    color: #1a2a33;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-cpu{
+    background-color: #F2B137;
+    box-shadow: 0px 5px rgba(242, 177, 55, 0.5);
+}
+
+.btn-player{
+    background-color: #31C3BD;
+    box-shadow: 0px 5px rgba(49, 195, 189, 0.5);
+}
