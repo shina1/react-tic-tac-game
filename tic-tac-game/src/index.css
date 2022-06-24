@@ -23,13 +23,20 @@ code {
   max-width: 375px;
   height: auto;
   margin: 0 auto;
+  padding: 20px 0;
+}
+.self-contianer{
   position: relative;
   left: 0;
   top: 0;
   transform: translate(0,17%);
-  padding: 20px 0;
 }
 h1,h2,h3,h4,h5,h6,p,small{
   color: #a8bfc9;
   font-weight: bold;
 }
+/* img{
+  width: 100%;
+  height: auto;
+} */
+

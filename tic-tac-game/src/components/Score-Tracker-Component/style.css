@@ -1,0 +1,36 @@
+.score-tracker-component-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5px;
+}
+.score-baord{
+    /* border: 2px solid red; */
+    width: 90px;
+    height: 64px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px ;
+}
+.score-baord p, span{
+    letter-spacing: 1.25px;
+    color: #1a2a33;
+    line-height: auto;
+}
+.score-baord p{
+    font-size: 14px;
+}
+.score-baord span{
+    font-size: 20px;
+    font-weight: bold;
+}
+.player-x-score{
+background: #31C3BD;
+}
+.ties-score{
+    background: #A8BFC9;
+}
+.player-o-score{
+    background: #F2B137;
+    }
