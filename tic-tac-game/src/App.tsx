@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import GameBoard from './screens/GameBoard';
 // import {
 //   BrowserRouter,
 //   Routes,
 //   Route,
 // } from "react-router-dom";
-import GameBoard from './screens/GameBoard';
+// import GameBoard from './screens/GameBoard';
 import NewGame from './screens/NewGame';
 
 
