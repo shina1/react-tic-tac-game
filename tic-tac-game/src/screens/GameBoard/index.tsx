@@ -1,6 +1,7 @@
 import { ReloadOutlined } from '@ant-design/icons';
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import GameButtonComponent from '../../components/Game-Buttons-Component';
+import ResetModalComponent from '../../components/Modal-Reset';
 import ScoreTrackerComponent from '../../components/Score-Tracker-Component';
 
 import './style.css'
@@ -15,6 +16,8 @@ type GameBoardType = {
 }
 
 const GameBoard: FC<GameBoardType> = ({ player, setPlayer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [buttonClicked, setButtonClicked] = useState(null)
   const setPlayerValue = (player: string): void => {
       if(player === 'X') {
         setPlayer('O')
@@ -22,6 +25,7 @@ const GameBoard: FC<GameBoardType> = ({ player, setPlayer }) => {
         setPlayer('X')
       }
   }
+ 
   return (
     
     <div className='container'>
@@ -31,10 +35,13 @@ const GameBoard: FC<GameBoardType> = ({ player, setPlayer }) => {
                     <img src={crossIcon} alt="imported-ic" />
                     <img src={circleIcon} alt="imported-ic" />
                 </div>
-                <div className='player-turn-indicator'><img src={player === 'X' ? crossIconGrey : circleIcon} alt="" /> <p>TURN</p></div>
-                <div className='reset-icon'><ReloadOutlined /></div>
+                <div className='player-turn-indicator'><img src={player === 'X' ? circleIcon : crossIconGrey} alt="" /> <p>TURN</p></div>
+                <button className='reset-icon' onClick={() => setIsOpen(true)}><ReloadOutlined /></button>
             </div>
-            <GameButtonComponent setPlayerValue={setPlayerValue} player={player} />
+            {
+              isOpen && <ResetModalComponent setIsOpen={setIsOpen} />
+            }
+            <GameButtonComponent setPlayerValue={setPlayerValue} player={player} buttonClicked={buttonClicked} />
             <ScoreTrackerComponent />
       </div>
     </div>
