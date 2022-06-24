@@ -1,0 +1,54 @@
+.gameboard-container{
+    width: 90%;
+    margin: 0 auto;
+}
+.top-info{
+width: 100%;
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+.top-imported-icons{
+    width: 71.97px;
+    height: 32;
+    justify-content: left;
+    align-items: center;
+}
+.top-imported-icons img{
+    max-width: 35%;
+    height: auto;
+}
+.player-turn-indicator{
+    width: 96px;
+    height: 37px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #1F3641;
+    /* box-shadow: 0px 5px rgba(31, 54, 65, 0.6); */
+    box-shadow: 0px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.player-turn-indicator img{
+   max-width: 20%;
+   height: auto;
+   margin: 3px 5px 0 3px;
+}
+.reset-icon{
+    width: 25%;
+    background: #A8BFC9;
+    width: 40px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px rgba(168, 191, 201, 0.5);
+    /* box-shadow: 0px 4px rgba(0, 0, 0, 0, 0.5); */
+    border-radius: 10px;
+}
+.reset-icon .anticon{
+    font-size: 150%;
+    font-weight: 900;
+    color: #1F3641;
+}
