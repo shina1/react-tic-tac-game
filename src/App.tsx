@@ -12,7 +12,8 @@ import NewGame from './screens/NewGame';
 
 function App() {
   const [page , setPage] = useState(0);
-  const [player, setPlayer] = useState('');
+  const [player1, setPlayer1] = useState('X');
+  const [player2, setPlayer2] = useState('O');
 
   const setPageHandler = (): void => {
       setPage(1);
@@ -26,10 +27,10 @@ function App() {
     // </BrowserRouter>
     <>
         {
-          page === 0 && <NewGame setPageHandler={setPageHandler} setPlayer={setPlayer} />
+          page === 0 && <NewGame setPageHandler={setPageHandler} setPlayer1={setPlayer1} setPlayer2={setPlayer2} />
         }
         {
-          page === 1 && <GameBoard  player={player} setPlayer={setPlayer}/>
+          page === 1 && <GameBoard  player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2}/>
         }
     </>
   );

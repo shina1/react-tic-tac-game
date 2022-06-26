@@ -11,20 +11,25 @@ const crossIconGrey = require('../../assets/Combined Shape Copy 2.png');
 
 
 type GameBoardType = {
-  player: string
-  setPlayer: Function
+  player1: string,
+  player2: string,
+  setPlayer1: Function,
+  setPlayer2: Function
 }
 
-const GameBoard: FC<GameBoardType> = ({ player, setPlayer }) => {
+const GameBoard: FC<GameBoardType> = ({ player1, player2, setPlayer1, setPlayer2 }) => {
+  // console.log(player)
   const [isOpen, setIsOpen] = useState(false);
-  const [buttonClicked, setButtonClicked] = useState(null)
-  const setPlayerValue = (player: string): void => {
-      if(player === 'X') {
-        setPlayer('O')
-      }else{
-        setPlayer('X')
-      }
-  }
+  const [playerTurn, setPlayerTurn] = useState('X');
+  // const setPlayerValue = (player1: string, player2: string): void => {
+  //     if(player1 === 'X') {
+  //       setPlayer1('O')
+  //       setPlayer2('X')
+  //     }else if(player2 === 'O'){
+  //       setPlayer2('X')
+  //       setPlayer1('O')
+  //     }
+  // }
  
   return (
     
@@ -35,13 +40,13 @@ const GameBoard: FC<GameBoardType> = ({ player, setPlayer }) => {
                     <img src={crossIcon} alt="imported-ic" />
                     <img src={circleIcon} alt="imported-ic" />
                 </div>
-                <div className='player-turn-indicator'><img src={player === 'X' ? circleIcon : crossIconGrey} alt="" /> <p>TURN</p></div>
+                <div className='player-turn-indicator'><img src={playerTurn === 'X' ? crossIconGrey : circleIcon} alt="" /> <p>TURN</p></div>
                 <button className='reset-icon' onClick={() => setIsOpen(true)}><ReloadOutlined /></button>
             </div>
             {
               isOpen && <ResetModalComponent setIsOpen={setIsOpen} />
             }
-            <GameButtonComponent setPlayerValue={setPlayerValue} player={player} buttonClicked={buttonClicked} />
+            <GameButtonComponent setPlayerTurn={setPlayerTurn} player1={player1} player2={player2} playerTurn={playerTurn} />
             <ScoreTrackerComponent />
       </div>
     </div>

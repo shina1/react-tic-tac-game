@@ -1,33 +1,73 @@
-import React, { FC, ReactElement  } from 'react'
+import React, { FC, ReactElement, useState  } from 'react'
 import './style.css'
 
-const crossI = require('../../assets/CombinedShapeCopy.png')
-const circleIcon  = require('../../assets/Oval Copy.png');
+const crossI: string = require('../../assets/CombinedShapeCopy.png')
+const circleIcon: string  = require('../../assets/Oval Copy.png');
 
 type GameButtonType = {
-  setPlayerValue: Function,
-  player: string,
-  buttonClicked: any
+  setPlayerTurn: React.Dispatch<React.SetStateAction<string>>,
+  player1: string,
+  player2: string,
+  playerTurn: string
 }
 
+type buttonClickedType = number | null
 
-const GameButtonComponent:FC<GameButtonType> = ({ setPlayerValue, player }) :ReactElement | null => {
+type buttonIconType =  ReactElement |  null
 
-   // const staticArrayOfNumber: number[] = [...Array(10).keys()]
-  // line 27 was flagged due to Downlevel iteration for ES3/ES5 for TypeScript error. 
-  const staticArrayOfNumber: number[] = Array.from(Array(9).keys())
 
-  const handleButtonClick = (buttonIndex: number): void => {
-    setPlayerValue(player);
-    console.log(buttonIndex);
-  }
+const GameButtonComponent:FC<GameButtonType> = ({ setPlayerTurn, player1, player2, playerTurn}) :ReactElement | null => {
+  const [buttons, setButtons] = useState<number[] | string[]>(Array.from(Array(9).keys()));
+  const [clickedBy, setClickedBy] = useState<buttonClickedType>(null)
+
  
+  // console.log('these are the buttons clicked ogebni',buttons);
+  const playerThatWins = (buttons: number[] | string[]): any => {
+    const arrayOfWinnings = [
+      [0,1,2],
+      [3,4,5],
+      [6,7,8],
+      [0,4,8],
+      [0,3,6],
+      [1,4,7],
+      [2,5,8],
+      [2,4,6]
+    ]
+
+    for(let i = 0; i < arrayOfWinnings.length; i++ ){
+
+      const [x, y, z] = arrayOfWinnings[i];
+      if(buttons[x] && buttons[x] === buttons[y] && buttons[x] === buttons[z]){
+        if(buttons[x]){
+          
+        }
+      }
+    }
+  }
+
+  
+  
   return (
     <div className='game-button-component-cntainer'>
         {
-          staticArrayOfNumber.map((el: number, i: number): ReactElement | null => {
+          buttons.map((el: any , i: number): ReactElement | null => {
+
               return (
-                <button type="button" className='click-btn' onClick={() => handleButtonClick(i)} key={i}>{el === i && <img src={player === 'O' ? circleIcon : crossI} alt="" />} </button>
+                <button type="button"  className='click-btn' onClick={() => {
+                  playerTurn === 'O' ? buttons[i] = 'O' : buttons[i] = 'X';
+                  // player2 === 'O' ? buttons[i] = 'O' : buttons[i] = 'X';
+                  setButtons(buttons);
+                  playerTurn === player1 ? setPlayerTurn(player2) : setPlayerTurn(player1);      
+                }}
+                key={i}
+                >
+                 {
+                    buttons[i] === 'O' && <img src={circleIcon} alt=''/>
+                 }
+                 {
+                  buttons[i] === 'X' && <img src={crossI} alt='' /> 
+                 }
+                </button>
               )
           } )
         }
@@ -36,3 +76,4 @@ const GameButtonComponent:FC<GameButtonType> = ({ setPlayerValue, player }) :Rea
 }
 
 export default GameButtonComponent
+
