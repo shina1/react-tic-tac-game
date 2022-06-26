@@ -12,10 +12,11 @@ const circleIconGrey = require('../../assets/Oval Copy-grey.png');
 
 type Game = {
   setPageHandler: Function,
-  setPlayer: Function
+  setPlayer1: Function,
+  setPlayer2: Function
 }
 
-const NewGame:FC<Game> = ({setPageHandler, setPlayer}) => {
+const NewGame:FC<Game> = ({setPageHandler, setPlayer1 , setPlayer2}) => {
   
   return (
     <div className='container self-contianer'>
@@ -27,10 +28,10 @@ const NewGame:FC<Game> = ({setPageHandler, setPlayer}) => {
         <div className='choose-player-card'>
           <h2>PICK PLAYER 1'S MARK</h2>
           <div className='player-choice-grp-btn'>
-            <button className='player-choice-btn btn-x' onClick={() => setPlayer('X')}>
+            <button className='player-choice-btn btn-x' onClick={() => {setPlayer1('X'); setPlayer2('O')}}>
               <img src={crossIconGrey} alt="grey icon" />
             </button>
-            <button className='player-choice-btn btn-o' onClick={() => setPlayer('O')}>
+            <button className='player-choice-btn btn-o' onClick={() => {setPlayer1('O'); setPlayer2('X')}}>
               <img src={circleIconGrey} alt="grey icon" />
             </button>
           </div>
