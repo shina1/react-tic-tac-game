@@ -1,4 +1,5 @@
-import React, { FC, ReactElement, useState  } from 'react'
+import React, { FC, ReactElement, useEffect, useState  } from 'react'
+import ModalComponent from '../Modal';
 import './style.css'
 
 const crossI: string = require('../../assets/CombinedShapeCopy.png')
@@ -16,13 +17,18 @@ type buttonClickedType = number | null
 type buttonIconType =  ReactElement |  null
 
 
+
 const GameButtonComponent:FC<GameButtonType> = ({ setPlayerTurn, player1, player2, playerTurn}) :ReactElement | null => {
-  const [buttons, setButtons] = useState<number[] | string[]>(Array.from(Array(9).keys()));
-  const [clickedBy, setClickedBy] = useState<buttonClickedType>(null)
+  const [buttons, setButtons] = useState<string[]>(Array.from(Array(9).fill('')));
+  const [stopGame, setStopGame] = useState(false);
+  const [roundWinner, setRoundWinner] = useState('');
+  const [tie, setTie] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
  
-  // console.log('these are the buttons clicked ogebni',buttons);
-  const playerThatWins = (buttons: number[] | string[]): any => {
+  console.log('these are the buttons clicked ogebni',playerTurn);
+
+  const playerThatWins = (buttons:string[]): any => {
     const arrayOfWinnings = [
       [0,1,2],
       [3,4,5],
@@ -35,17 +41,47 @@ const GameButtonComponent:FC<GameButtonType> = ({ setPlayerTurn, player1, player
     ]
 
     for(let i = 0; i < arrayOfWinnings.length; i++ ){
-
-      const [x, y, z] = arrayOfWinnings[i];
-      if(buttons[x] && buttons[x] === buttons[y] && buttons[x] === buttons[z]){
-        if(buttons[x]){
-          
-        }
+    const [x, y, z] = arrayOfWinnings[i];
+       if(buttons[x] && buttons[x] === buttons[y] && buttons[x] === buttons[z]){
+            return buttons[x]
       }
-    }
   }
+  return null
+}
 
+const winner = playerThatWins(buttons);
+console.log('the winner is', winner);
+
+
+const checkForTies = (buttons: string[], winner:any,): any =>{
+  if(buttons.every((item: string) => item !== "") && !winner){
+    setTie(true);
+    setIsOpen(true);
+    // alert('there was a tie')
+  }
+}
+
+
+useEffect(() => {
+  checkForTies(buttons, winner);
   
+}, [buttons,winner, setIsOpen , isOpen])
+
+
+
+  //  for alerting the round winner
+   useEffect(() => {
+    if(winner === 'X' || winner === 'O'){
+      setRoundWinner(winner);
+      setStopGame(true);
+      setPlayerTurn(winner === 'X' ? 'O' : 'X');
+      setIsOpen(true);
+      // alert(`Player ${winner} wins this round`);
+    }
+   }, [winner, setPlayerTurn])
+
+ 
+   console.log(`Player ${roundWinner} wins this round`);
   
   return (
     <div className='game-button-component-cntainer'>
@@ -53,7 +89,7 @@ const GameButtonComponent:FC<GameButtonType> = ({ setPlayerTurn, player1, player
           buttons.map((el: any , i: number): ReactElement | null => {
 
               return (
-                <button type="button"  className='click-btn' onClick={() => {
+                <button type="button"  className='click-btn' disabled={buttons[i] !== '' || stopGame === true} onClick={() => {
                   playerTurn === 'O' ? buttons[i] = 'O' : buttons[i] = 'X';
                   // player2 === 'O' ? buttons[i] = 'O' : buttons[i] = 'X';
                   setButtons(buttons);
@@ -70,6 +106,12 @@ const GameButtonComponent:FC<GameButtonType> = ({ setPlayerTurn, player1, player
                 </button>
               )
           } )
+        }
+        {
+           (roundWinner && isOpen) && <ModalComponent message='you win' winner={roundWinner}  setIsOpen={setIsOpen} setButtons={setButtons} setStopGame={setStopGame}/>
+        }
+        {
+          (tie && isOpen ) && <ModalComponent message='THIS ROUND WAS A TIE' setIsOpen={setIsOpen} setButtons={setButtons} setStopGame={setStopGame}/>
         }
     </div>
   )

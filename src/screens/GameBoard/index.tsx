@@ -18,18 +18,8 @@ type GameBoardType = {
 }
 
 const GameBoard: FC<GameBoardType> = ({ player1, player2, setPlayer1, setPlayer2 }) => {
-  // console.log(player)
   const [isOpen, setIsOpen] = useState(false);
   const [playerTurn, setPlayerTurn] = useState('X');
-  // const setPlayerValue = (player1: string, player2: string): void => {
-  //     if(player1 === 'X') {
-  //       setPlayer1('O')
-  //       setPlayer2('X')
-  //     }else if(player2 === 'O'){
-  //       setPlayer2('X')
-  //       setPlayer1('O')
-  //     }
-  // }
  
   return (
     
