@@ -3,9 +3,6 @@ import React, {FC, useState} from 'react'
 import './style.css'
 
 import crossIcon from '../../assets/CombinedShapeCopy.png';
-// import {crossIcon} from ;
-// import from ;
-// const crossIcon = require('../../assets/CombinedShapeCopy.png');
 const circleIcon  = require('../../assets/Oval Copy.png');
 const crossIconGrey = require('../../assets/Combined Shape Copy 2.png');
 const circleIconGrey = require('../../assets/Oval Copy-grey.png');
