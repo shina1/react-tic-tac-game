@@ -1,20 +1,27 @@
-import React from 'react'
+import React,{FC} from 'react'
 import './style.css'
 
-const ScoreTrackerComponent = () => {
+
+type ScoretrackerType = {
+  playerXScore: number,
+  playerOScore: number,
+  tieScore: number,
+}
+
+const ScoreTrackerComponent: FC<ScoretrackerType> = ({playerXScore, playerOScore, tieScore}) => {
   return (
     <div className='score-tracker-component-container'>
         <div className='player-x-score score-baord'>
             <p>X (YOU)</p>
-            <span>30</span>
+            <span>{playerXScore}</span>
         </div>
         <div className='ties-score score-baord'>
             <p>TIES</p>
-            <span>11</span>
+            <span>{tieScore}</span>
         </div>
         <div className='player-o-score score-baord'>
             <p>O (CPU)</p>
-            <span>42</span>
+            <span>{playerOScore}</span>
         </div>
     </div>
   )

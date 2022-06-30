@@ -11,15 +11,11 @@ type ResetModalComponentType = {
     setIsOpen: Function,
     setButtons: Function,
     setStopGame: Function,
+    setTie: Function,
+    tie?:boolean,
 }
 
-const ModalComponent: FC<ResetModalComponentType> = ({ message, winner, setIsOpen, setButtons, setStopGame}) => {
-    // const [isOpen, setIsOpen] = useState(false);
-
-    // useEffect(()=> {
-      // setIsOpen(openModal)
-
-    // }, [openModal])
+const ModalComponent: FC<ResetModalComponentType> = ({ message, winner, setIsOpen, setButtons, setStopGame, setTie, tie}) => {
     
   return (
     <>
@@ -30,14 +26,14 @@ const ModalComponent: FC<ResetModalComponentType> = ({ message, winner, setIsOpe
                     <h4>{message}</h4>
                 </div>
                 <div className="modal-component-Content">
-                    <img src={winner === 'X' ? circleIcon : crossIcon} alt="winner icon" /> <h3>TAKES THE ROUND </h3>
+                    <img src={winner === 'X' ? crossIcon :  circleIcon} alt="winner icon" /> <h3>TAKES THE ROUND </h3>
                 </div>
                 {/* <div className="modalActions"> */}
                     <div className="modal-component-actionsContainer">
                     <button className="modal-component-cancelBtn" onClick={() => {setIsOpen(false)}}>
                         QUIT
                         </button>
-                        <button className="modal-component-deleteBtn" onClick={() => {setIsOpen(false); setButtons(Array.from(Array(9).fill(''))); setStopGame(false)}}>NEXT ROUND</button>
+                        <button className="modal-component-deleteBtn" onClick={() => {setIsOpen(false); setButtons(Array.from(Array(9).fill(''))); setStopGame(false); setTie(tie === true && false)}}>NEXT ROUND</button>
                     {/* </div> */}
                 </div>
             </div>

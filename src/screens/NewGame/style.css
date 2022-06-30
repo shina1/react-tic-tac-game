@@ -28,6 +28,7 @@
     margin: 50px auto;
     width: 100%;
     padding: 10px 0;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .choose-player-card h2{
@@ -47,7 +48,7 @@
     margin: 5px auto;
 }
 .player-choice-grp-btn .player-choice-btn{
-    width: 50%;
+    width: 45%;
     background: none;
     border: none;
     padding: 10px;
@@ -58,15 +59,26 @@
     flex-direction: column; */
     justify-content: center;
     align-items: center;
+    margin: 0 5px;
 }
 .player-choice-grp-btn .player-choice-btn img{
     width: 25px;
     height: 25px;
 }
-.player-choice-grp-btn .btn-o{
-    background: #a8bfc9;
-    
+.player-choice-grp-btn .btn-o:hover{
+    /* background: #1a2a33;  */
+    background: #1F3641;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.25);
 }
+.player-choice-grp-btn .btn-x:hover{
+    background: #1F3641; 
+    box-shadow: 0 5px rgba(0, 0, 0, 0.25);
+}
+.player-choice-grp-btn .player-choice-btn:active {
+    background-color:  #a8bfc9;;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+    transform: translateY(4px);
+  }
 
 .btn-group{
     width: 100%;
@@ -103,3 +115,4 @@
     color: #1a2a33;
     text-decoration: none;
 }
+

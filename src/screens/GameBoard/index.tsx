@@ -13,13 +13,17 @@ const crossIconGrey = require('../../assets/Combined Shape Copy 2.png');
 type GameBoardType = {
   player1: string,
   player2: string,
+  playerCpu: boolean,
   setPlayer1: Function,
-  setPlayer2: Function
+  setPlayer2: Function,
 }
 
-const GameBoard: FC<GameBoardType> = ({ player1, player2, setPlayer1, setPlayer2 }) => {
+const GameBoard: FC<GameBoardType> = ({ player1, player2, setPlayer1, setPlayer2, playerCpu }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [playerTurn, setPlayerTurn] = useState('X');
+  const [playerXScore, setPlayerXScore] = useState(0);
+  const [playerOScore, setPlayerOScore] = useState(0);
+  const [tieScore, setTieScore] = useState(0);
  
   return (
     
@@ -36,8 +40,8 @@ const GameBoard: FC<GameBoardType> = ({ player1, player2, setPlayer1, setPlayer2
             {
               isOpen && <ResetModalComponent setIsOpen={setIsOpen} />
             }
-            <GameButtonComponent setPlayerTurn={setPlayerTurn} player1={player1} player2={player2} playerTurn={playerTurn} />
-            <ScoreTrackerComponent />
+            <GameButtonComponent setPlayerTurn={setPlayerTurn} player1={player1} player2={player2} playerTurn={playerTurn} setPlayerXScore={setPlayerXScore}  setPlayerOScore={setPlayerOScore} setTieScore={setTieScore} playerXScore={playerXScore} playerOScore={playerOScore} tieScore={tieScore} playerCpu={playerCpu}/>
+            <ScoreTrackerComponent playerXScore={playerXScore} playerOScore={playerOScore} tieScore={tieScore}/>
       </div>
     </div>
   )
