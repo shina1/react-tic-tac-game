@@ -10,10 +10,11 @@ const circleIconGrey = require('../../assets/Oval Copy-grey.png');
 type Game = {
   setPageHandler: Function,
   setPlayer1: Function,
-  setPlayer2: Function
+  setPlayer2: Function,
+  setPlayerCpu: Function,
 }
 
-const NewGame:FC<Game> = ({setPageHandler, setPlayer1 , setPlayer2}) => {
+const NewGame:FC<Game> = ({setPageHandler, setPlayer1 , setPlayer2, setPlayerCpu}) => {
   
   return (
     <div className='container self-contianer'>
@@ -35,7 +36,7 @@ const NewGame:FC<Game> = ({setPageHandler, setPlayer1 , setPlayer2}) => {
           <p>REMEBER: X GOES FIRST</p>
         </div>
         <div className='btn-group'>
-          <button className='btn-new-game btn-cpu' >NEW GAME (VS CPU)</button>
+          <button className='btn-new-game btn-cpu' onClick={() => {setPageHandler(); setPlayerCpu(true)} }>NEW GAME (VS CPU)</button>
           <button className='btn-new-game btn-player' onClick={() => setPageHandler()}>NEW GAME (VS PLAYER)</button>
         </div>
       </div>

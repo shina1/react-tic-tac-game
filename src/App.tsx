@@ -14,6 +14,7 @@ function App() {
   const [page , setPage] = useState(0);
   const [player1, setPlayer1] = useState('X');
   const [player2, setPlayer2] = useState('O');
+  const [playerCpu, setPlayerCpu] = useState(false);
 
   const setPageHandler = (): void => {
       setPage(1);
@@ -27,10 +28,10 @@ function App() {
     // </BrowserRouter>
     <>
         {
-          page === 0 && <NewGame setPageHandler={setPageHandler} setPlayer1={setPlayer1} setPlayer2={setPlayer2} />
+          page === 0 && <NewGame setPageHandler={setPageHandler} setPlayer1={setPlayer1} setPlayer2={setPlayer2} setPlayerCpu={setPlayerCpu} />
         }
         {
-          page === 1 && <GameBoard  player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2}/>
+          page === 1 && <GameBoard  player1={player1} player2={player2} setPlayer1={setPlayer1} setPlayer2={setPlayer2} playerCpu={playerCpu}/>
         }
     </>
   );
